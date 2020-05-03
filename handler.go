@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -22,6 +23,7 @@ func newHandler(sdpCh chan webrtc.SessionDescription) *handler {
 }
 
 func (h *handler) sdp(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("here?")
 	body, _ := ioutil.ReadAll(r.Body)
 
 	b, err := base64.StdEncoding.DecodeString(string(body))
